@@ -1,0 +1,10 @@
+version: '2'
+services:
+    restapi:
+        container_name: api_demo
+        build: .
+        command: uwsgi --ini uwsgi.ini
+        ports:
+        - "8010:8010"
+        volumes:
+        - ./app:/srv/www/apicraft

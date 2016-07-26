@@ -8,3 +8,9 @@ services:
         - "8010:8010"
         volumes:
         - ./app:/srv/www/apicraft
+        links:
+        - db_postgresql
+    db_postgresql:
+        environment:
+            POSTGRES_PASSWORD: "123456"
+        image: postgres

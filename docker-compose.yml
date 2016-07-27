@@ -3,13 +3,15 @@ services:
     restapi:
         container_name: api_demo
         build: .
+        restart: always
         command: uwsgi --ini uwsgi.ini
         ports:
-        - "8010:8010"
+            - "8010:8010"
         volumes:
-        - ./app:/srv/www/apicraft
+            - ./app:/srv/www/apidemo
         links:
-        - db_postgresql
+            - db_postgresql
+
     db_postgresql:
         environment:
             POSTGRES_PASSWORD: "123456"

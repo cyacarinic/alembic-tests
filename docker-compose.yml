@@ -13,6 +13,7 @@ services:
             - db_postgresql
 
     db_postgresql:
+        build: ./db_yachay
+        container_name: yachay_postgres
         environment:
             POSTGRES_PASSWORD: "123456"
-        image: postgres

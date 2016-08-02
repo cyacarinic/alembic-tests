@@ -1,13 +1,13 @@
-"""test
+"""revision_demo
 
-Revision ID: 1bd07c725ce9
+Revision ID: 827ebfa4c087
 Revises: 
-Create Date: 2016-08-02 11:08:12.123723
+Create Date: 2016-08-02 19:52:53.110392
 
 """
 
 # revision identifiers, used by Alembic.
-revision = '1bd07c725ce9'
+revision = '827ebfa4c087'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -28,4 +28,3 @@ def upgrade():
 
 def downgrade():
     op.drop_table('User')
-

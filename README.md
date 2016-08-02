@@ -17,3 +17,8 @@ Generar scripts de migración vacios
 ```sh
 $ docker exec api_demo  alembic -c api/alembic.ini revision -m "test"
 ```
+
+Actualizar la database
+```sh
+docker exec api_demo alembic -c api/alembic.ini upgrade head
+```

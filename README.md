@@ -15,31 +15,30 @@ $ docker exec api_demo alembic init test_migrations
 
 ## Customizar la configuración según nuestro motor de base de datos
 ```sh
-Editar:		api-demo/app/alembic.ini
-Cambiar:	sqlalchemy.url = driver://user:pass@localhost/dbname
-Por: 		sqlalchemy.url = postgresql://postgres:123456@yachay_postgres/yachay_demo
-
+$ Editar:	api-demo/app/alembic.ini
+$ Cambiar:	sqlalchemy.url = driver://user:pass@localhost/dbname
+$ Por: 		sqlalchemy.url = postgresql://postgres:123456@yachay_postgres/yachay_demo
 ```
 
-### Generar scripts de migración vacios
+## Customizar el target de los modelos a migrar
 ```sh
-$ docker exec api_demo  alembic -c alembic.ini revision -m "revision_demo"
+$ Editar:	api-demo/app/test_migrations/env.py
+$ Añadir:
+
+import os, sys
+sys.path.insert(0, os.path.realpath(os.path.join(os.path.dirname(__file__), '..')))
+import models
+target_metadata = models.Base.metadata
 ```
 
-## Funciones de Upgrade y Downgrade para los scripts generados
+### Generar scripts de migración según el modelo targeteado
+```sh
+$ docker exec api_demo  alembic -c alembic.ini revision --autogenerate -m "revision_demo"
+```
+
+## Verificar las funciones Upgrade y Downgrade de los scripts generados en
 ````sh
-def upgrade():
-    op.create_table(
-        'Users',
-        sa.Column('id', sa.Integer, primary_key=True),
-        sa.Column('guid', sa.String(), unique=True, nullable=False),
-        sa.Column('email', sa.String(), unique=True),
-        sa.Column('password', sa.String(), unique=True)
-    )
-
-
-def downgrade():
-    op.drop_table('User')
+$ api-demo/app/test_migrations/versions/....
 ```
 
 ### Actualizar la database

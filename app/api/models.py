@@ -5,8 +5,8 @@ from sqlalchemy.ext.declarative import declarative_base
 Base = declarative_base()
 
 
-class Users(Base):
-    __tablename__ = 'Users'
+class User(Base):
+    __tablename__ = 'User'
     id = Column(Integer, primary_key=True)
     guid = Column(String, unique=True)
     email = Column(String, unique=True)

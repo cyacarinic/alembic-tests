@@ -6,12 +6,12 @@ Base = declarative_base()
 
 
 class User(Base):
-    __tablename__ = 'User'
+    __tablename__ = 'UserNew'
     id = Column(Integer, primary_key=True)
     guid = Column(String, unique=True)
     email = Column(String, unique=True)
     password = Column(String)
-    bio = Column(String)
+    biography = Column(String)
 
     def __repr__(self):
         return '<User %d|%s>' % (self.id, self.email)

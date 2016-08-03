@@ -41,7 +41,22 @@ $ docker exec api_demo  alembic -c alembic.ini revision --autogenerate -m "revis
 $ api-demo/app/test_migrations/versions/....
 ```
 
-### Actualizar la database
+### Actualizar la database a la versión mas reciente
 ```sh
 docker exec api_demo alembic upgrade head
+```
+
+### Actualizar la database una versión
+```sh
+docker exec api_demo alembic upgrade +1
+```
+
+### Retroceder una versión
+```sh
+docker exec api_demo alembic downgrade -1
+```
+
+### Retroceder a la versión básica
+```sh
+docker exec api_demo alembic downgrade base
 ```

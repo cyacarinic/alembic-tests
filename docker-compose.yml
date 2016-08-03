@@ -17,3 +17,5 @@ services:
         container_name: yachay_postgres
         environment:
             POSTGRES_PASSWORD: "123456"
+        ports:
+            - "5432:5432"

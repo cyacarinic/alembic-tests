@@ -11,6 +11,7 @@ class Users(Base):
     guid = Column(String, unique=True)
     email = Column(String, unique=True)
     password = Column(String)
+    bio = Column(String)
 
     def __repr__(self):
         return '<User %d|%s>' % (self.id, self.email)

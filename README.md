@@ -27,7 +27,7 @@ $ Añadir:
 
 import os, sys
 sys.path.insert(0, os.path.realpath(os.path.join(os.path.dirname(__file__), '..')))
-import models
+from api import models
 target_metadata = models.Base.metadata
 ```
 

@@ -6,7 +6,7 @@ Base = declarative_base()
 
 
 class User(Base):
-    __tablename__ = 'UserNew'
+    __tablename__ = 'usernew'
     id = Column(Integer, primary_key=True)
     guid = Column(String, unique=True)
     email = Column(String, unique=True)

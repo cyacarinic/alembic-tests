@@ -46,9 +46,9 @@ class ItemsCollectionResource:
                 }
             ]
         }
-        raise utils.HTTPException(404,
-            "Resource not Found",
-            "Resource not Found")
+        # raise utils.HTTPException(404,
+        #     "Resource not Found",
+        #     "Resource not Found")
 
     def on_post(self, req, resp):
         resp.body = {"item": "demo"}

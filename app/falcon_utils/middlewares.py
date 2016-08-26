@@ -31,19 +31,26 @@ class ParseMediaType(object):
         response = resp.body
         content_type = resp.content_type
 
-        # print 'si' if req.client_accepts_json else 'no'
+        if not resp.body:
+            resp.status = 404
+            msj = {
+                "status": 404,
+                "devMessage": "This API doest not support that route",
+                "userMessage": "This API doest not support that route"
+            }
+            resp.body = json.dumps(msj)
+        else:
+            if req.client_accepts_xml:
+                content_type = "application/xml"
+                response = dicttoxml(resp.body)
 
-        if req.client_accepts_xml:
-            content_type = "application/xml"
-            response = dicttoxml(resp.body)
+            if req.client_accepts_json or self._parse_type == "json":
+                content_type = "application/json"
+                response = json.dumps(resp.body)
 
-        if req.client_accepts_json or self._parse_type == "json":
-            content_type = "application/json"
-            response = json.dumps(resp.body)
+            if self._parse_type == "xml":
+                content_type = "application/xml"
+                response = dicttoxml(resp.body)
 
-        if self._parse_type == "xml":
-            content_type = "application/xml"
-            response = dicttoxml(resp.body)
-
-        resp.content_type = content_type
-        resp.body = response
+            resp.content_type = content_type
+            resp.body = response

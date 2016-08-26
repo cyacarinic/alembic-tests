@@ -4,6 +4,3 @@
 # System Files
 *.pyc
 .pyc
-
-# TEST DIR
-TEST/*
